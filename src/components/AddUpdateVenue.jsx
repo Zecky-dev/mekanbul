@@ -27,6 +27,8 @@ function AddUpdateVenue() {
         
       />
 
+
+
       <InputWithLabel
         id={"mekanAdi"}
         label={"Mekan Adı"}
@@ -111,6 +113,13 @@ function AddUpdateVenue() {
         value={isUpdate ? state.hours[1].close : ""}
       />
       
+      <InputWithLabel
+        id={"mekanAdi"}
+        label={"Kapalı 2"}
+        type={"checkbox"}
+        value={isUpdate ? state.hours[1].open : ""}
+      />
+
       <AdminButton
         onClick={isUpdate ? deleteVenue : updateVenue}
         name={isUpdate ? "Mekanı Güncelle" : "Mekan Ekle"}

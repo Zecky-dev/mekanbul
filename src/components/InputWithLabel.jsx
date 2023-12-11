@@ -14,7 +14,7 @@ const InputWithLabel = ({
       }
     }, [isFocused]);
     return (
-      <div>
+      <div className="form-group">
         <label htmlFor={id}>{label}</label>&nbsp;
         <input
           id={id}
@@ -22,6 +22,7 @@ const InputWithLabel = ({
           value={value}
           onChange={onInputChange}
           ref={inputRef}
+          className={type === "checkbox" ? "form-check-input" : "form-control"}
         />
       </div>
     );
