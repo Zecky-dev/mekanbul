@@ -6,7 +6,7 @@ const VenueList = ({ venues, admin }) => {
   var navigate = useNavigate();
   const performClick = (evt) => {
     if (evt.target.name === "Mekan Ekle") {
-      return navigate("/admin/addupdate");
+      return navigate("/admin/addupdate",{state: {type: "add"}});
     }
   };
   return (
