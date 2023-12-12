@@ -27,8 +27,6 @@ function AddUpdateVenue() {
         
       />
 
-
-
       <InputWithLabel
         id={"mekanAdi"}
         label={"Mekan Adı"}
