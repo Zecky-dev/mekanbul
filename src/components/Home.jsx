@@ -28,7 +28,6 @@ const Home = () => {
   React.useEffect(() => {
     dispatchVenues({ type: "FETCH_INIT" });
     try {
-      
       VenueDataService.listJsonVenues().then((result) => {
         dispatchVenues({
           type: "FETCH_SUCCESS",

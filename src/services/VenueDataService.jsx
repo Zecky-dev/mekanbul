@@ -7,7 +7,7 @@ class VenueDataService {
   }
 
   listJsonVenues() {
-    return http.get();
+    return http.get('/venue');
   }
 
   nearbyVenues(lat,long) {
@@ -15,7 +15,7 @@ class VenueDataService {
   }
 
   getVenue(id) {
-    return http.get(`venue/${id}`);
+    return http.get(`/venue/${id}`);
   }
 
   addVenue(data) {
@@ -47,7 +47,7 @@ class VenueDataService {
     return http.put(`/venue/${venueID}/comments/${commentID}`, data);
   }
   addComment(mekanid, data) {
-    return http.post(`/venue/${mekanid}/comments`, data);
+    return http.post(`/venue/${mekanid}/comments/new`, data);
   }
   removeComment(venueID, yorumid) {
     return http.delete(`/venue/${venueID}/comments/${yorumid}`);

@@ -3,6 +3,7 @@ import Rating from "./Rating";
 import FoodAndDrinkList from "./FoodAndDrinkList";
 import AdminButton from "./AdminButton";
 import {formatDistance} from "../services/Utils";
+import VenueDataService from "../services/VenueDataService";
 const Venue = ({ venue, admin }) => {
   
   const navigate = useNavigate()
@@ -12,8 +13,10 @@ const Venue = ({ venue, admin }) => {
       navigate("./addupdate",{state: {type,...venue}})
     }
     else {
-      // Silme işlemi
-      console.log("Siliniyor!!")
+      VenueDataService.removeVenue(venue._id).then((val) => {
+        navigate('/admin',{state: val.data})
+      })
+      
     }
 
   };
@@ -22,7 +25,7 @@ const Venue = ({ venue, admin }) => {
       <div className="col-xs-12 col-sm-12">
         <div className="col-xs-12 list-group-item">
           <h4>
-            <NavLink to={`/venue/${venue.id}`} state={{ id: venue.id }}>
+            <NavLink to={`/venue/${venue._id}`} state={{ id: venue._id }}>
               {venue.name}{" "}
             </NavLink>
             <Rating rating={venue.rating} />

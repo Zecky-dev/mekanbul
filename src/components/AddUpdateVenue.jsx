@@ -1,7 +1,8 @@
-import { useLocation } from "react-router-dom";
+import { useLocation} from "react-router-dom";
 import Header from "./Header";
 import InputWithLabel from "./InputWithLabel";
 import AdminButton from "./AdminButton";
+import VenueDataService from "../services/VenueDataService";
 
 function AddUpdateVenue() {
 
@@ -10,10 +11,10 @@ function AddUpdateVenue() {
   const isUpdate = state.type === "update"
 
   function deleteVenue() {
-    console.log("Deleting venue")
+    
   }
 
-  function updateVenue() {
+  function updateVenue() {    
     console.log("Updating Venue")
   }
 

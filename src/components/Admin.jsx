@@ -1,3 +1,4 @@
+import { useLocation } from "react-router-dom";
 import InputWithLabel from "./InputWithLabel";
 import VenueList from "./VenueList";
 import VenueReducer from "../services/VenueReducer";
@@ -15,6 +16,9 @@ const useCookies = (key, defaultValue) => {
 };
 
 const Admin = () => {
+
+  const { state } = useLocation();
+
   const [searchVenue, setSearchVenue] = useCookies("searchVenue", "");
   const [venues, dispatchVenues] = React.useReducer(VenueReducer, {
     data: [],
@@ -38,7 +42,7 @@ const Admin = () => {
     } catch {
       dispatchVenues({ type: "FETCH_FAILURE" });
     }
-  }, []);
+  }, [state]);
   const filteredVenues = venues.data.filter(
     (venue) =>
       venue.name.toLowerCase().includes(searchVenue.toLowerCase()) ||
@@ -51,15 +55,6 @@ const Admin = () => {
         headerText="Mekanbul-Admin"
         motto="Mekanları Yönetin"
       />
-      <InputWithLabel
-        id="arama"
-        label="Mekan Ara:"
-        typ="text"
-        isFocused
-        onInputChange={search}
-        value={searchVenue}
-      />
-      <hr />
       {venues.isError ? (
         <p>
           <strong>Birşeyler ters gitti! ...</strong>

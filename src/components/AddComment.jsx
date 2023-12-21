@@ -3,6 +3,7 @@ import { useLocation,useNavigate } from "react-router-dom";
 import VenueReducer from "../services/VenueReducer";
 import Header from "./Header";
 import React from "react";
+import VenueDataService from "../services/VenueDataService";
 function AddComment() {
   const { id } = useParams();
   var navigate=useNavigate();
@@ -12,7 +13,24 @@ function AddComment() {
     isSuccess:false
   });
   const onSubmit = (evt) => {
-  
+    evt.preventDefault()
+    const nameSurname = evt.target.adsoyad.value
+    const rating = evt.target.puan.value
+    const comment = evt.target.yorum.value
+    const newComment = {
+      author: nameSurname,
+      rating,
+      date: new Date().toISOString,
+      text: comment,
+    }
+    try {
+      VenueDataService.addComment(id,newComment).then((val) => {
+        dispatchComment({type: "ADD_COMMENT_SUCCESS"})
+      })
+    }
+    catch(error) {
+      console.log("Yorum eklenirken hata oluştu!")
+    }    
   };
   if(comment.isSuccess){
     return navigate(`/venue/${id}`);
